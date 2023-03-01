@@ -21,3 +21,8 @@ lsof -t -i tcp:8000 | xargs kill -9
 1. `cargo install cargo-expand`
 2. `rustup toolchain install nightly --allow-downgrade`
 3. `cargo +nightly expand`
+
+## Remove unused dependencies
+
+1. `cargo install cargo-udeps`
+2. `cargo +nightly udeps`
