@@ -1,2 +1,8 @@
-/.idea
 /target
+
+# Code Coverage
+cobertura.xml
+build_rs_cov.profraw
+
+# IDE
+/.idea
