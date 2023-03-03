@@ -1,0 +1,9 @@
+.github
+.idea
+migrations/
+scripts/
+target/
+tests/
+.env
+cobertura.xml
+Dockerfile

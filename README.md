@@ -26,3 +26,14 @@ lsof -t -i tcp:8000 | xargs kill -9
 
 1. `cargo install cargo-udeps`
 2. `cargo +nightly udeps`
+
+## Docker
+
+```sh
+# Update SQLx schema for offline builds
+cargo sqlx prepare -- --lib
+
+# Build and run image
+docker build --tag zero2prod --file Dockerfile .
+docker run -p 8000:8000 --network=host zero2prod
+```
