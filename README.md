@@ -37,3 +37,29 @@ cargo sqlx prepare -- --lib
 docker build --tag zero2prod --file Dockerfile .
 docker run -p 8000:8000 --network=host zero2prod
 ```
+
+## Digital Ocean
+
+```sh
+# Create app
+doctl apps create --spec spec.yaml
+
+# Get app ID and URL
+app_id=$(doctl apps list | awk '/zero2prod/ {print $1}')
+app_url=$(doctl apps list | awk '/zero2prod/ {print $3}')
+
+# Update app
+doctl apps update $app_id --spec=spec.yaml
+
+# Migrate database
+DATABASE_URL=$database_url sqlx migrate run
+
+# Health check
+curl -v $app_url/health_check
+
+# Post
+curl -v $app_url/subscriptions -d 'name=Le%20Guin&email=ursula%40leguin.com'
+
+# Delete
+doctl app delete --force $app_id
+```
