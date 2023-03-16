@@ -25,7 +25,8 @@ mod tests {
     use fake::faker::internet::en::SafeEmail;
     use fake::Fake;
     use quickcheck::Gen;
-    use rand::{rngs::StdRng, SeedableRng};
+    use rand::rngs::StdRng;
+    use rand::SeedableRng;
 
     use super::SubscriberEmail;
 
